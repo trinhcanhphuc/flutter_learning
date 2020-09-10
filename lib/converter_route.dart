@@ -12,7 +12,8 @@ import 'package:meta/meta.dart';
 ///
 /// While it is named ConverterRoute, a more apt name would be ConverterScreen,
 /// because it is responsible for the UI at the route's destination.
-class ConverterRoute extends StatelessWidget {
+// TODO: Make ConverterRoute a StatefulWidget
+class ConverterRoute extends StatefulWidget {
   /// Color for this [Category].
   final Color color;
 
@@ -20,7 +21,6 @@ class ConverterRoute extends StatelessWidget {
   final List<Unit> units;
 
   /// This [ConverterRoute] requires the color and units to not be null.
-  // TODO: Pass in the [Category]'s color
   const ConverterRoute({
     @required this.color,
     @required this.units,
@@ -28,26 +28,33 @@ class ConverterRoute extends StatelessWidget {
         assert(units != null);
 
   @override
+  _ConverterRouteState createState() => _ConverterRouteState();
+}
+
+class _ConverterRouteState extends State<ConverterRoute> {
+  @override
   Widget build(BuildContext context) {
     // Here is just a placeholder for a list of mock units
-    final unitWidgets = units.map((Unit unit) {
-      // TODO: Set the color for this Container
+    // TODO: Once the build() function is inside the State object,
+    // you'll have to reference this using `widget.units`
+    final unitWidgets = widget.units.map((Unit unit) {
       return Container(
-          margin: EdgeInsets.all(8.0),
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              Text(
-                unit.name,
-                style: Theme.of(context).textTheme.headline,
-              ),
-              Text(
-                'Conversion: ${unit.conversion}',
-                style: Theme.of(context).textTheme.subhead,
-              ),
-            ],
-          ),
-          color: this.color);
+        color: widget.color,
+        margin: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              unit.name,
+              style: Theme.of(context).textTheme.headline,
+            ),
+            Text(
+              'Conversion: ${unit.conversion}',
+              style: Theme.of(context).textTheme.subhead,
+            ),
+          ],
+        ),
+      );
     }).toList();
 
     return ListView(
