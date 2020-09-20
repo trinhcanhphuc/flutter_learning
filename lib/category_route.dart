@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hello_rectangle/unit_converter.dart';
 
 import 'backdrop.dart';
@@ -72,6 +73,18 @@ class _CategoryRouteState extends State<CategoryRoute> {
     }),
   ];
 
+  // TODO: Add image asset paths here
+  static const _icons = <String>[
+    'assets/icons/length.png',
+    'assets/icons/area.png',
+    'assets/icons/volume.png',
+    'assets/icons/mass.png',
+    'assets/icons/time.png',
+    'assets/icons/digital_storage.png',
+    'assets/icons/power.png',
+    'assets/icons/currency.png',
+  ];
+
   @override
   Future<void> didChangeDependencies() async {
     super.didChangeDependencies();
@@ -101,7 +114,8 @@ class _CategoryRouteState extends State<CategoryRoute> {
         name: key,
         units: units,
         color: _baseColors[categoryIndex],
-        iconLocation: Icons.cake,
+        // TODO: Replace the placeholder icon with an icon image path
+        iconLocation: _icons[categoryIndex],
       );
       setState(() {
         if (categoryIndex == 0) {
