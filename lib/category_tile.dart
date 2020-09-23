@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'category.dart';
-import 'unit_converter.dart';
 
 // We use an underscore to indicate that these variables are private.
 // See https://www.dartlang.org/guides/language/effective-dart/design#libraries
@@ -63,9 +62,8 @@ class CategoryTile extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.all(16.0),
-                  // TODO: Use an Image instead of an Icon
-                  child: Image.asset(category.iconLocation)
-                  ),
+                  child: Image.asset(category.iconLocation),
+                ),
                 Center(
                   child: Text(
                     category.name,
